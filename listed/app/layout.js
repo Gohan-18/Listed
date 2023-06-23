@@ -1,3 +1,5 @@
+"use client"
+
 import "./globals.css";
 import { Inter, Montserrat, Lato } from "next/font/google";
 import Context from "../context/context";
@@ -10,10 +12,10 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
 });
 
-export const metadata = {
-  title: "Listed",
-  description: "Listed...",
-};
+// export const metadata = {
+//   title: "Listed",
+//   description: "Listed...",
+// };
 
 export default function RootLayout({ children }) {
   return (
