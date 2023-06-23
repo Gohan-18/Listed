@@ -20,15 +20,13 @@ const inputForm = () => {
     // await logInUser(userName.value, password.value, router, error, setError);
   };
 
-  const { data: session, status } = useSession({
-    required: true,
-  });
+  const { data: session, status } = useSession();
 
-  if (status === "loading") {
-    return <>Loading...</>;
-  }
+  // if (status === "loading") {
+  //   return <>Loading...</>;
+  // }
 
-  if (session) {
+  if (status === "authenticated") {
     router.push("/profile");
     return null;
   }
@@ -56,12 +54,12 @@ const inputForm = () => {
         </h4>
       </div>
       <div className="flex w-full items-center justify-between gap-2 flex-col lg:flex-row " >
-      <button onClick={handleSignIn} className="text-xs w-full flex-1 bg-white px-2 py-1 rounded-md text-slate-400 font-medium flex items-center justify-center gap-2" >
+      <button onClick={handleSignIn} className="text-xs w-full  bg-white px-2 py-1 rounded-md text-slate-400 font-medium flex items-center justify-center gap-2" >
         <Image className="h-3 w-3" src={googleIcon} alt="Google Icon" /> Sign In with Google</button>
-      <button onClick={handleSignIn} className="text-xs w-full flex-1 bg-white px-2 py-1 rounded-md text-slate-400 font-medium flex items-center justify-center gap-2" >
+      <button onClick={handleSignIn} className="text-xs w-full  bg-white px-2 py-1 rounded-md text-slate-400 font-medium flex items-center justify-center gap-2" >
         <Image className="h-3 w-3" src={appleIcon} alt="Apple Icon" /> Sign In with Apple</button>
       </div>
-      <div className="bg-white p-10 flex items-start justify-center flex-col gap-3 rounded-2xl ">
+      <div className="bg-white p-10 flex items-start justify-center flex-col gap-3 rounded-2xl w-full ">
         <div className="w-full">
           <label
             className="text-gray-700 text-xs font-medium "

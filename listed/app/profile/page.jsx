@@ -29,6 +29,8 @@ const page = () => {
     return null;
   }
 
+  console.log(status)
+
   return (
     <>
       {/* <Context> */}
