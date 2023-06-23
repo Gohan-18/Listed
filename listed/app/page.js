@@ -1,7 +1,11 @@
+"use client"
+
 import Image from "next/image";
 import InputForm from "../components/inputform";
 import { getServerSession } from "next-auth";
 // import { useRouter } from "next/navigation";
+import Context from "../context/context";
+
 
 export default function Home() {
 

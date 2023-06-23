@@ -18,11 +18,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <Context>
+
       <body className={montserrat.className}>
+      <Context>
         <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
-      </body>
       </Context>
+      </body>
     </html>
   );
 }
