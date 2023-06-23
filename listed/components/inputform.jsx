@@ -4,8 +4,12 @@ import React, { useEffect, useState } from "react";
 // import { logInUser, setLoginUser } from "@/utils/fetchingFunctions";
 import { useRouter } from "next/navigation";
 import { lato } from "../app/layout";
+import Image from "next/image";
+import googleIcon from "../public/google-icon 1.svg"
+import appleIcon from "../public/apple 1.svg"
+import { signIn } from "next-auth/react";
 
-const inputForm = () => {
+const inputForm = ({session}) => {
   const router = useRouter();
   const [error, setError] = useState(false);
 
@@ -15,6 +19,17 @@ const inputForm = () => {
     // console.log(userName.value);
     // await logInUser(userName.value, password.value, router, error, setError);
   };
+
+  if (session?.value !== "null") {
+    router.push("/profile");
+    return null;
+  }
+
+  console.log(session)
+
+  const handleSignIn = () => {
+    signIn();
+  }
 
   return (
     <form
@@ -26,6 +41,12 @@ const inputForm = () => {
         <h4 className=" text-gray-700 text-xs font-medium text-start">
           Sign in to your account
         </h4>
+      </div>
+      <div className="flex w-full items-center justify-between gap-2 flex-col lg:flex-row " >
+      <button onClick={handleSignIn} className="text-xs w-full flex-1 bg-white px-2 py-1 rounded-md text-slate-400 font-medium flex items-center justify-center gap-2" >
+        <Image className="h-3 w-3" src={googleIcon} alt="Google Icon" /> Sign In with Google</button>
+      <button onClick={handleSignIn} className="text-xs w-full flex-1 bg-white px-2 py-1 rounded-md text-slate-400 font-medium flex items-center justify-center gap-2" >
+        <Image className="h-3 w-3" src={appleIcon} alt="Apple Icon" /> Sign In with Apple</button>
       </div>
       <div className="bg-white p-10 flex items-start justify-center flex-col gap-3 rounded-2xl ">
         <div className="w-full">

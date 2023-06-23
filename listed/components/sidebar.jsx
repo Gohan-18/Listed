@@ -23,6 +23,7 @@ const sidebar = () => {
       <div className="flex items-start justify-start flex-col gap-4 mb-12">
         {sidebarOptions.map((item) => (
           <span
+          key={item.name}
             onClick={() => {
               setActiveFilter(item.name);
             }}
@@ -35,7 +36,6 @@ const sidebar = () => {
                   ? "text-slate-100 font-semibold "
                   : "text-slate-400"
               } text-sm  hidden lg:flex `}
-              key={item.name}
             >
               {item.name}{" "}
             </p>
