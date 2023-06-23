@@ -7,9 +7,9 @@ import { lato } from "../app/layout";
 import Image from "next/image";
 import googleIcon from "../public/google-icon 1.svg"
 import appleIcon from "../public/apple 1.svg"
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
-const inputForm = ({session}) => {
+const inputForm = () => {
   const router = useRouter();
   const [error, setError] = useState(false);
 
@@ -20,12 +20,25 @@ const inputForm = ({session}) => {
     // await logInUser(userName.value, password.value, router, error, setError);
   };
 
-  if (session?.value !== "null") {
+  const { data: session, status } = useSession({
+    required: true,
+  });
+
+  if (status === "loading") {
+    return <>Loading...</>;
+  }
+
+  if (session) {
     router.push("/profile");
     return null;
   }
 
-  console.log(session)
+  // if (session?.value !== "null") {
+  //   router.push("/profile");
+  //   return null;
+  // }
+
+  // console.log(session)
 
   const handleSignIn = () => {
     signIn();

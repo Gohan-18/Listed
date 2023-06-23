@@ -5,7 +5,7 @@ import { getServerSession } from "next-auth";
 
 export default function Home() {
 
-  const session = getServerSession();
+  // const session = getServerSession();
   // const router = useRouter()
 
   // if(session === "loading") {
@@ -23,7 +23,7 @@ export default function Home() {
         <h1 className="text-2xl text-slate-50 font-bold">Board.</h1>
       </div>
       <div className="bg-gray-200 w-full lg:w-3/5 h-screen flex items-center justify-center px-5 ">
-        <InputForm session={session} />
+        <InputForm />
       </div>
     </main>
   );
